@@ -1,27 +1,54 @@
-# AngularMaterialTheme
+# change project from css to scss
+1. install sass globally
+### > npm install -g sass
+2. rename styles.css to styles.scss
+3. change all component imports and rename css files
+4. in angular.json file in styles : change src/styles.css to src/styles.scss
+5. in angular.json change above under test also
+6. in angular.json change
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+        
+      },
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+      to this
 
-## Development server
+            "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        },
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+        
+      },
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Global Vs Encapsulated styles in angular
 
-## Code scaffolding
+@Component({
+    encapsulation: ViewEncapsulation.none
+})
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+will turn off custom class generators for each angular component
 
-## Build
+## 
+::ng-deep .mat-button-wrapper{
+    background-color: green;
+}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+will apply background color style to all button elements as ::ng-deep has been used
+  "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  # Color system in angular
 
-## Running end-to-end tests
+  1. Primary: Default,darker,lighter
+  2. Accent: Default,darker,lighter
+  3. Warn: Default,darker,lighter
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  ##Pallete from 50,100,200 to 900 and A100,A200,A400,A700
+  Default is 500
+  Lighter is 200
+  Darker is 800

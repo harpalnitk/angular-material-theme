@@ -1,5 +1,6 @@
+$padding: 20px;
 .content {
-    padding: 20px;
+    padding: $padding;
     box-sizing: border-box;
 }
 .sort-area{
