@@ -48,7 +48,10 @@ will apply background color style to all button elements as ::ng-deep has been u
   2. Accent: Default,darker,lighter
   3. Warn: Default,darker,lighter
 
-  ##Pallete from 50,100,200 to 900 and A100,A200,A400,A700
+  ## Pallete from 50,100,200 to 900 and A100,A200,A400,A700
   Default is 500
   Lighter is 200
   Darker is 800
+
+
+> ng g c banner --skip-tests true --module app

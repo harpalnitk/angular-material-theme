@@ -1,0 +1,29 @@
+@use '~@angular/material/theming' as material;
+
+//custom mixin that will generate theme for this component
+
+@mixin app-banner-theme($theme){
+    //it will check for some legacy issue and return
+    //all color themes
+    $theme-colors: material.mat-get-color-config($theme);
+    $success-color: map-get($theme-colors,success);
+    //by default it will return 500 i.e. default color
+   // $background-color: material.mat-color($success-color);
+    //we need lighter
+    $background-color: material.mat-color($success-color,lighter);
+app-banner{
+    background-color: $background-color;
+}
+
+//No host binding needed in above
+//preferably we should use above becuase we dont
+//often change name of component
+
+
+//instead of using app-banner directly
+//another way is with host binding in the component ts file
+// .app-banner{
+//     background-color: $background-color;
+// }
+
+}

@@ -2,6 +2,10 @@
 
 
 @use '~@angular/material/theming' as material;
+//we are importing it here because we need access to theme
+//which will not be available in component
+//scss file
+@use './app/banner/banner-component.scss-theme.scss' as banner;
 
 //built in function
 @use 'sass:map';
@@ -15,6 +19,8 @@ $workshop-accent: material.mat-palette(material.$mat-pink, A200, A100, A400);
 // the default is 500,200,800
 
 //EXTRA COLORS
+//success and info are our custom colors
+//they are not originally in material theme design
 $workshop-success: material.mat-palette(material.$mat-green);
 $workshop-info: material.mat-palette(material.$mat-blue);
 
@@ -40,6 +46,10 @@ color:(
 
 @include material.angular-material-theme($workshop-theme);
 //also remove prebuilt theme from angular.json file
+
+//for custom component theme
+@include banner.app-banner-theme($workshop-theme);
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
