@@ -1,9 +1,9 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <button mat-icon-button >
    <mat-icon>menu</mat-icon>
  </button>
  <span>Material Theming</span>
- <span class="example-spacer"></span>
+ <span class="spacer"></span>
 
  <button mat-icon-button>
   <mat-icon>share</mat-icon>
@@ -11,13 +11,46 @@
 </mat-toolbar>
 
 <main class="content">
-
+  <section class="sort-area">
+    <mat-form-field class="drop-down">
+      <mat-label>Choose an option</mat-label>
+      <mat-select>
+          <mat-option value="option1">Ask</mat-option>
+          <mat-option value="option2">Des</mat-option>
+      </mat-select>
+    </mat-form-field>
+      <button mat-raised-button color="accent">Sort</button>
+    </section>
+    <section class="card-area">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <img matCardImage src="assets/img/profile-1.jpg" alt="Photo of a dog">
+        <mat-card-content>
+           <p>Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. A corrupti ad id 
+              vero maxime error veniam, consequuntur
+               explicabo dolorem eaque reprehenderit
+                quas blanditiis architecto aliquid 
+                debitis quam, ut, obcaecati doloremque 
+                amet enim eius! Atque eius quas commodi
+                 eveniet, ipsum voluptate quae asperiores
+                  veniam iste odio id cumque earum voluptas vel.</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+            
+        </mat-card-actions>
+        <mat-card-footer>
+            Footer
+        </mat-card-footer>
+    </mat-card>
+    </section>
 </main>
-<section class="sort-area">
 
-  
-</section>
-<section class="card-area"></section>
 
 
 
