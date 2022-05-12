@@ -17,6 +17,20 @@ export class BannerComponent implements OnInit {
 
   @Input()
   message = '';
+
+@Input()
+type: 'success' | 'info' | 'warn' | 'none' = 'none';
+
+@HostBinding('class')
+get hostClass(){
+  if (this.type !== 'none'){
+    return `app-banner-${this.type}`;
+  }else{
+    return '';
+  }
+ 
+}
+
   constructor() { }
 
   ngOnInit(): void {

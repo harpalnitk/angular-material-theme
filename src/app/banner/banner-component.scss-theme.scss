@@ -1,29 +1,68 @@
-@use '~@angular/material/theming' as material;
+@use "~@angular/material/theming" as material;
+
+
+//typography mixin
+@mixin app-bannner-typography($typography-config){
+    app-banner{
+.heading{
+    @include material.mat-typography-level-to-styles($typography-config, title);
+    //title comes from different text options in the theming file
+    //line-height: material.mat-line-height($typography-config, title);
+    //to change only one value we use individual helper functions
+}
+.message{
+    @include material.mat-typography-level-to-styles($typography-config, body-1);
+}
+    }
+}
+
 
 //custom mixin that will generate theme for this component
 
-@mixin app-banner-theme($theme){
-    //it will check for some legacy issue and return
-    //all color themes
-    $theme-colors: material.mat-get-color-config($theme);
-    $success-color: map-get($theme-colors,success);
-    //by default it will return 500 i.e. default color
-   // $background-color: material.mat-color($success-color);
-    //we need lighter
-    $background-color: material.mat-color($success-color,lighter);
-app-banner{
-    background-color: $background-color;
+@mixin app-banner-theme($theme) {
+  //it will check for some legacy issue and return
+  //all color themes
+  $theme-colors: material.mat-get-color-config($theme);
+  $typography: material.mat-get-typography-config($theme);
+
+  $success-color-palette: map-get($theme-colors, success);
+  $info-color-palette: map-get($theme-colors, info);
+  $warn-color-palette: map-get($theme-colors, warn);
+  //by default it will return 500 i.e. default color
+  // $background-color: material.mat-color($success-color);
+  //we need lighter
+  // $background-color: material.mat-color($success-color-palette,lighter);
+  //above variable directly bein used below now
+  $backgrounds: map-get($theme-colors, background);
+  //background comes from theming file of angular material package
+
+@if $typography != null{
+    @include app-bannner-typography($typography);
 }
 
-//No host binding needed in above
-//preferably we should use above becuase we dont
-//often change name of component
 
+  app-banner {
+    background-color: material.mat-color($backgrounds, card);
+    //below classes will be global so use appropriate names
+    &.app-banner-success {
+      background-color: material.mat-color($success-color-palette, lighter);
+    }
+    &.app-banner-info {
+      background-color: material.mat-color($info-color-palette, lighter);
+    }
+    &.app-banner-warn {
+      background-color: material.mat-color($warn-color-palette, lighter);
+    }
+  }
 
-//instead of using app-banner directly
-//another way is with host binding in the component ts file
-// .app-banner{
-//     background-color: $background-color;
-// }
+  //No host binding needed in above
+  //preferably we should use above becuase we dont
+  //often change name of component
 
+  //instead of using app-banner directly
+  //another way is with host binding in the component ts file
+  // .app-banner{
+  //     background-color: $background-color;
+  // }
 }
+
