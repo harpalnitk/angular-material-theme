@@ -1,0 +1,16 @@
+// sass variables 
+$green-color:green;
+
+// if variable is declared default other
+// developers can change it
+$primary-color:$green-color !default;
+
+$suffix: decorator;
+
+$suffix-small: small;
+
+$suffixes: small,medium,large;
+$element-sizes: (    
+    small:100px,
+medium:300px,
+large:500px);

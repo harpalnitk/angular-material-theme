@@ -1,0 +1,14 @@
+//FUNCTIONS
+@function custom-color($color: #000){
+    @if $color == #000{
+        @return currentColor;
+    }
+     @return fade-out($color,0.8);
+ }
+ @function sum($numbers...){
+     $sum:0;
+     @each $number in $numbers{
+         $sum: $sum + $number;
+     }
+     @return $sum;
+ }

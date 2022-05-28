@@ -1,0 +1,97 @@
+.common {
+  display: inline;
+}
+
+body {
+  background-color: lightgreen;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: black;
+}
+
+body {
+  background-color: lightgreen;
+  display: block;
+}
+body h1 {
+  font-size: 2em;
+}
+body h1:hover {
+  color: #ccc;
+}
+body h1.child {
+  color: #ddd;
+}
+body h1.child:hover {
+  color: #eee;
+}
+.root-style {
+  color: red;
+}
+
+.panel {
+  color: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: black;
+}
+
+.panel-suffix {
+  color: lightgreen;
+}
+
+.panel-small {
+  color: lightgreen;
+  width: 100px;
+}
+
+.panel-medium {
+  color: lightgreen;
+  width: 300px;
+}
+
+.panel-large {
+  color: lightgreen;
+  width: 500px;
+}
+
+.panel-loop-small {
+  color: lightgreen;
+  width: 100px;
+}
+
+.panel-loop-medium {
+  color: lightgreen;
+  width: 300px;
+}
+
+.panel-loop-large {
+  color: lightgreen;
+  width: 500px;
+}
+
+.panel-loop-map-small {
+  color: lightgreen;
+  width: 100px;
+}
+
+.panel-loop-map-medium {
+  color: lightgreen;
+  width: 300px;
+}
+
+.panel-loop-map-large {
+  color: lightgreen;
+  width: 500px;
+}
+
+div.function {
+  color: currentColor;
+  background-color: rgba(255, 0, 0, 0.2);
+  padding: 17px;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,18 @@
+
+
+//MIXINS
+//used for common code used in multiple places
+@mixin flex-center($color: black){
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-color: $color;
+}
+
+@mixin common-classes($isInline: true){
+    @if $isInline == true {
+        .common {
+            display: inline;
+        }
+    }
+}

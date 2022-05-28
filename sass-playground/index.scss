@@ -1,0 +1,99 @@
+// @import './variables.scss';
+// @import './functions.scss';
+// @import './mixins.scss';
+
+//import causes name clashes
+//and if there is some css style 
+//in imported file, it will be rendered
+//multiple times
+//so we use : @use
+
+@use './variables.scss' as variables with(
+    $primary-color: lightgreen
+);
+@use './functions.scss' as functions;
+@use './mixins.scss' as mixins;
+
+
+@include mixins.common-classes();
+
+body {
+    background-color: variables.$primary-color;
+    display: block;
+    @include mixins.flex-center();
+}
+
+body {
+    $main-color: variables.$primary-color !global;
+    background-color: variables.$primary-color;
+    display: block;
+
+    //nesting in scss
+    h1{
+        $color:red;
+        font-size: 2em;
+        &:hover{
+            color: #ccc;
+        }
+        &.child{
+            color: #ddd;
+            &:hover{
+                color: #eee;
+            }
+        }
+        @at-root .root-style{
+            color:$color;
+        }
+    }
+}
+
+.panel{
+    // main color cannot be used here as it is block scoped 
+    // it can be used only after being declared global
+    color: $main-color;
+    @include mixins.flex-center();
+}
+
+.panel-#{suffix}{
+    color: variables.$primary-color;
+}
+//above will produce this in css file
+// .panel-suffix {
+//     color: green;
+//   }
+
+
+.panel-#{nth(variables.$suffixes,1)}{
+    color:variables.$primary-color;
+    width:map-get(variables.$element-sizes,small);
+}
+.panel-#{nth(variables.$suffixes,2)}{
+    color:variables.$primary-color;
+    width:map-get(variables.$element-sizes,medium);
+}
+.panel-#{nth(variables.$suffixes,3)}{
+    color:variables.$primary-color;
+    width:map-get(variables.$element-sizes,large);
+}
+
+@each $size in variables.$suffixes{
+    .panel-loop-#{$size}{
+        color:variables.$primary-color;
+        width:map-get(variables.$element-sizes,$size);
+    } 
+}
+
+@each $key,$value in variables.$element-sizes{
+    .panel-loop-map-#{$key}{
+        color:variables.$primary-color;
+        width:$value;
+    }   
+}
+
+
+div.function{
+    color: functions.custom-color();
+    background-color: functions.custom-color(red);
+    padding: functions.sum(10px,5px,2px);
+}
+
